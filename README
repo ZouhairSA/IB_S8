@@ -1,16 +1,20 @@
 Étudiant :
 
-Email : student@test.com
-Mot de passe : student123
+Email : ibtihal@gmail.com
+Mot de passe : ibtihal123
+
 Professeur :
 
-Email : teacher@test.com
-Mot de passe : teacher123
+Email : Ratli@gmail.com
+Mot de passe : ratli123
 Administrateur :
 
-Email : admin@test.com
-Mot de passe : admin123
+Email : boulmal@gmail.com
+Mot de passe : boulmal321
 
 Run : 
+    cd backend/> python app.py (pour execution de backend )
+    
+    front end : 
     npm run build
     npm run preview
