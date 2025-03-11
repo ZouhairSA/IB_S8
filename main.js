@@ -1,21 +1,21 @@
 // Simulated database
 const db = {
   users: {
-    student: { email: 'student@test.com', password: 'student123', role: 'student', name: 'Jean Dupont' },
-    teacher: { email: 'teacher@test.com', password: 'teacher123', role: 'teacher', name: 'Prof Martin' },
-    admin: { email: 'admin@test.com', password: 'admin123', role: 'admin', name: 'Admin System' }
+    student: { email: 'ibtihal@gmail.com', password: 'ibtihal123', role: 'student', name: 'BOULMAL IBTIHAL' },
+    teacher: { email: 'Ratli@gmail.com', password: 'ratli123', role: 'teacher', name: 'Prof RATLI' },
+    admin: { email: 'boulmal@gmail.com', password: 'boulmal321', role: 'admin', name: 'ADMIN IBTIHAL' }
   },
   courses: [
-    { id: 1, name: 'Mathématiques', description: 'Cours de mathématiques avancées', teacher: 'Prof Martin' },
-    { id: 2, name: 'Physique', description: 'Introduction à la physique', teacher: 'Prof Martin' }
+    { id: 1, name: 'PHP', description: 'BACK END', teacher: 'Prof RATLI' },
+    { id: 2, name: 'REACT JS', description: 'FRONT END', teacher: 'Prof RATLI' }
   ],
   grades: [
     { id: 1, studentId: 'student', courseId: 1, grade: 85 },
     { id: 2, studentId: 'student', courseId: 2, grade: 78 }
   ],
   announcements: [
-    { id: 1, title: 'Rentrée scolaire', content: 'Bienvenue pour cette nouvelle année!', date: '2023-09-01' },
-    { id: 2, title: 'Examens', content: 'Les examens commencent le 15 décembre', date: '2023-11-15' }
+    { id: 1, title: 'Rentrée scolaire', content: 'Bienvenue pour cette nouvelle année!', date: '2025-01-01' },
+    { id: 2, title: 'Examens', content: 'Les examens commencent le 15 décembre', date: '2025-03-15' }
   ],
   messages: [
     { id: 1, from: 'teacher', to: 'student', content: 'N\'oubliez pas le devoir pour demain', date: '2023-11-20' },
