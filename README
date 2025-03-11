@@ -1,0 +1,16 @@
+Étudiant :
+
+Email : student@test.com
+Mot de passe : student123
+Professeur :
+
+Email : teacher@test.com
+Mot de passe : teacher123
+Administrateur :
+
+Email : admin@test.com
+Mot de passe : admin123
+
+Run : 
+    npm run build
+    npm run preview
