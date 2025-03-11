@@ -1,241 +1,227 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Système de Gestion Universitaire</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="/style.css">
-  </head>
-  <body>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
     <div id="app">
-      <!-- Navigation -->
-      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <div class="container">
-          <a class="navbar-brand" href="#">HESTIM</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav" id="navMenu">
-              <!-- Menu items will be added dynamically -->
-            </ul>
-          </div>
-        </div>
-      </nav>
-
-      <!-- Main Content -->
-      <div class="container mt-4">
-        <!-- Login Form -->
-        <div id="loginForm" class="card mx-auto" style="max-width: 400px;">
-          <div class="card-header">
-            <h3 class="text-center">Connexion</h3>
-          </div>
-          <div class="card-body">
-            <form id="authForm" onsubmit="return false;">
-              <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" required>
-              </div>
-              <div class="mb-3">
-                <label for="password" class="form-label">Mot de passe</label>
-                <input type="password" class="form-control" id="password" required>
-              </div>
-              <div class="mb-3">
-                <label for="userType" class="form-label">Type d'utilisateur</label>
-                <select class="form-select" id="userType">
-                  <option value="student">Étudiant</option>
-                  <option value="teacher">Enseignant</option>
-                  <option value="admin">Administrateur</option>
-                </select>
-              </div>
-              <button type="submit" class="btn btn-primary w-100" onclick="login()">Se connecter</button>
-            </form>
-          </div>
-        </div>
-
-        <!-- Dashboard -->
-        <div id="dashboard" style="display: none;">
-          <h2 class="mb-4">Tableau de bord</h2>
-          <div class="row">
-            <div class="col-md-4 mb-4">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title">Cours</h5>
-                  <p class="card-text" id="coursesCount">0 cours</p>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="#">HESTIM</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav" id="navMenu">
+                        <!-- Menu items will be added dynamically -->
+                    </ul>
                 </div>
-              </div>
             </div>
-            <div class="col-md-4 mb-4">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title">Annonces</h5>
-                  <p class="card-text" id="announcementsCount">0 annonces</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4 mb-4">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title">Messages</h5>
-                  <p class="card-text" id="messagesCount">0 messages</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Courses Section -->
-        <div id="courses" class="content-section" style="display: none;">
-          <h2 class="mb-4">Gestion des Cours</h2>
-          <div class="row">
-            <div class="col-md-8">
-              <div class="card">
-                <div class="card-header d-flex justify-content-between align-items-center">
-                  <h5 class="mb-0">Liste des Cours</h5>
-                  <button class="btn btn-primary btn-sm" onclick="showAddCourseForm()">
-                    <i class="bi bi-plus-circle"></i> Nouveau Cours
-                  </button>
-                </div>
-                <div class="card-body">
-                  <div id="coursesList" class="list-group">
-                    <!-- Courses will be added here dynamically -->
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="card">
+        </nav>
+        <div class="container mt-4">
+            <div id="loginForm" class="card mx-auto" style="max-width: 400px;">
                 <div class="card-header">
-                  <h5 class="mb-0">Ajouter un Cours</h5>
+                    <h3 class="text-center">Connexion</h3>
                 </div>
                 <div class="card-body">
-                  <form id="addCourseForm" onsubmit="return false;">
-                    <div class="mb-3">
-                      <label for="courseName" class="form-label">Nom du cours</label>
-                      <input type="text" class="form-control" id="courseName" required>
-                    </div>
-                    <div class="mb-3">
-                      <label for="courseDescription" class="form-label">Description</label>
-                      <textarea class="form-control" id="courseDescription" rows="3"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary" onclick="addCourse()">Ajouter</button>
-                  </form>
+                    <form id="authForm" onsubmit="return false;">
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Mot de passe</label>
+                            <input type="password" class="form-control" id="password" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="userType" class="form-label">Type d'utilisateur</label>
+                            <select class="form-select" id="userType">
+                                <option value="student">Étudiant</option>
+                                <option value="teacher">Enseignant</option>
+                                <option value="admin">Administrateur</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100" onclick="login()">Se connecter</button>
+                    </form>
                 </div>
-              </div>
             </div>
-          </div>
+            <div id="dashboard" style="display: none;">
+                <h2 class="mb-4">Tableau de bord</h2>
+                <div class="row">
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Cours</h5>
+                                <p class="card-text" id="coursesCount">0 cours</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Annonces</h5>
+                                <p class="card-text" id="announcementsCount">0 annonces</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Messages</h5>
+                                <p class="card-text" id="messagesCount">0 messages</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="courses" class="content-section" style="display: none;">
+                <h2 class="mb-4">Gestion des Cours</h2>
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h5 class="mb-0">Liste des Cours</h5>
+                                <button class="btn btn-primary btn-sm" onclick="showAddCourseForm()">
+                                    <i class="bi bi-plus-circle"></i> Nouveau Cours
+                                </button>
+                            </div>
+                            <div class="card-body">
+                                <div id="coursesList" class="list-group">
+                                    <!-- Courses will be added here dynamically -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="mb-0">Ajouter un Cours</h5>
+                            </div>
+                            <div class="card-body">
+                                <form id="addCourseForm" onsubmit="return false;">
+                                    <div class="mb-3">
+                                        <label for="courseName" class="form-label">Nom du cours</label>
+                                        <input type="text" class="form-control" id="courseName" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="courseDescription" class="form-label">Description</label>
+                                        <textarea class="form-control" id="courseDescription" rows="3"></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary" onclick="addCourse()">Ajouter</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="grades" class="content-section" style="display: none;">
+                <h2 class="mb-4">Gestion des Notes</h2>
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">Notes des Étudiants</h5>
+                    </div>
+                    <div class="card-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Étudiant</th>
+                                    <th>Cours</th>
+                                    <th>Note</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="gradesList">
+                                <!-- Grades will be added here dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div id="announcements" class="content-section" style="display: none;">
+                <h2 class="mb-4">Annonces</h2>
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h5 class="mb-0">Annonces Récentes</h5>
+                                <button class="btn btn-primary btn-sm" onclick="showAddAnnouncementForm()">
+                                    <i class="bi bi-plus-circle"></i> Nouvelle Annonce
+                                </button>
+                            </div>
+                            <div class="card-body">
+                                <div id="announcementsList" class="list-group">
+                                    <!-- Announcements will be added here dynamically -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="mb-0">Ajouter une Annonce</h5>
+                            </div>
+                            <div class="card-body">
+                                <form id="addAnnouncementForm" onsubmit="return false;">
+                                    <div class="mb-3">
+                                        <label for="announcementTitle" class="form-label">Titre</label>
+                                        <input type="text" class="form-control" id="announcementTitle" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="announcementContent" class="form-label">Contenu</label>
+                                        <textarea class="form-control" id="announcementContent" rows="3"></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary" onclick="addAnnouncement()">Publier</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="messages" class="content-section" style="display: none;">
+                <h2 class="mb-4">Messagerie</h2>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="mb-0">Conversations</h5>
+                            </div>
+                            <div class="card-body">
+                                <div id="conversationsList" class="list-group">
+                                    <!-- Conversations will be added here dynamically -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="mb-0" id="currentConversationTitle">Sélectionnez une conversation</h5>
+                            </div>
+                            <div class="card-body">
+                                <div id="messagesList" class="messages-container mb-3">
+                                    <!-- Messages will be added here dynamically -->
+                                </div>
+                                <form id="sendMessageForm" onsubmit="return false;">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="messageContent" placeholder="Votre message...">
+                                        <button class="btn btn-primary" type="submit" onclick="sendMessage()">
+                                            <i class="bi bi-send"></i> Envoyer
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <!-- Grades Section -->
-        <div id="grades" class="content-section" style="display: none;">
-          <h2 class="mb-4">Gestion des Notes</h2>
-          <div class="card">
-            <div class="card-header">
-              <h5 class="mb-0">Notes des Étudiants</h5>
-            </div>
-            <div class="card-body">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th>Étudiant</th>
-                    <th>Cours</th>
-                    <th>Note</th>
-                    <th>Actions</th>
-                  </tr>
-                </thead>
-                <tbody id="gradesList">
-                  <!-- Grades will be added here dynamically -->
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-
-        <!-- Announcements Section -->
-        <div id="announcements" class="content-section" style="display: none;">
-          <h2 class="mb-4">Annonces</h2>
-          <div class="row">
-            <div class="col-md-8">
-              <div class="card">
-                <div class="card-header d-flex justify-content-between align-items-center">
-                  <h5 class="mb-0">Annonces Récentes</h5>
-                  <button class="btn btn-primary btn-sm" onclick="showAddAnnouncementForm()">
-                    <i class="bi bi-plus-circle"></i> Nouvelle Annonce
-                  </button>
-                </div>
-                <div class="card-body">
-                  <div id="announcementsList" class="list-group">
-                    <!-- Announcements will be added here dynamically -->
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="card">
-                <div class="card-header">
-                  <h5 class="mb-0">Ajouter une Annonce</h5>
-                </div>
-                <div class="card-body">
-                  <form id="addAnnouncementForm" onsubmit="return false;">
-                    <div class="mb-3">
-                      <label for="announcementTitle" class="form-label">Titre</label>
-                      <input type="text" class="form-control" id="announcementTitle" required>
-                    </div>
-                    <div class="mb-3">
-                      <label for="announcementContent" class="form-label">Contenu</label>
-                      <textarea class="form-control" id="announcementContent" rows="3"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary" onclick="addAnnouncement()">Publier</button>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Messages Section -->
-        <div id="messages" class="content-section" style="display: none;">
-          <h2 class="mb-4">Messagerie</h2>
-          <div class="row">
-            <div class="col-md-4">
-              <div class="card">
-                <div class="card-header">
-                  <h5 class="mb-0">Conversations</h5>
-                </div>
-                <div class="card-body">
-                  <div id="conversationsList" class="list-group">
-                    <!-- Conversations will be added here dynamically -->
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-8">
-              <div class="card">
-                <div class="card-header">
-                  <h5 class="mb-0" id="currentConversationTitle">Sélectionnez une conversation</h5>
-                </div>
-                <div class="card-body">
-                  <div id="messagesList" class="messages-container mb-3">
-                    <!-- Messages will be added here dynamically -->
-                  </div>
-                  <form id="sendMessageForm" onsubmit="return false;">
-                    <div class="input-group">
-                      <input type="text" class="form-control" id="messageContent" placeholder="Votre message...">
-                      <button class="btn btn-primary" type="submit" onclick="sendMessage()">
-                        <i class="bi bi-send"></i> Envoyer
-                      </button>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script type="module" src="/main.js"></script>
-  </body>
+    <script type="module" src="main.js"></script>
+</body>
 </html>
